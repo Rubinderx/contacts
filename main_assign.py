@@ -22,8 +22,8 @@ class ContactBook:
             print("All Contacts:")
 
             #Errors in code here
-            for contact in contacts:
-                print(f"Name: {name}\nPhone: {phone_number}\nEmail: {contact.email}\n")
+            for contact in self.contacts:
+                print(f"Name: {contact.name}\nPhone: {contact.phone_number}\nEmail: {contact.email}\n")
         else:
             print("No contacts found.")
 
