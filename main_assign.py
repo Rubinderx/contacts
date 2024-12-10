@@ -33,7 +33,7 @@ class ContactBook:
                 return contact # chatgpt help
             else:
                 print(f"\nSorry, no contact found with the name '{name}'.")
-                return
+                return None
 
     def update_contact(self, name):
         contact = self.search_contact(name)
@@ -46,7 +46,7 @@ class ContactBook:
             while True:
                 choice = input("Enter your choice: ").strip().lower()
                 if choice == "1":
-                    new_name = input("Enter new name: ")
+                    new_name = input("Enter new name: ").strip().lower()
                     if new_name:
                         contact.name = new_name
                         print(f"Contact's name updated - {new_name}-")
@@ -74,7 +74,11 @@ class ContactBook:
                 else:
                     print("Please enter 1, 2 or 3.")
 
-    #Missing DELETE cointact functions
+    def delete_contact(self, name):
+        contact = self.search_contact(name)
+        if contact:
+            self.contacts.remove(contact)
+            print(f"Contact - {name} - has been deleted.")
 
 def main():
     contact_book = ContactBook()
@@ -85,6 +89,7 @@ def main():
         print("2. Display All Contacts")
         print("3. Search Contacts")
         print("4. Update Contacts")
+        print("5. Delete Contact")
         print("0. Exit")
 
         choice = input("Enter your choice: ")
@@ -102,6 +107,9 @@ def main():
         elif choice == "4":
             update_name = input("Which contact are you trying to update: ").strip().lower()
             contact_book.update_contact(update_name)
+        elif choice == "5":
+            delete_name = input("Which contact are you trying to delete: ").strip().lower()
+            contact_book.delete_contact(delete_name)
         elif choice == "0":
             print("Exiting Contact Book. Goodbye!")
             break
