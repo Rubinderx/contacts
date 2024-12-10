@@ -13,8 +13,8 @@ class ContactBook:
 
     def add_contact(self, name, phone_number, email):
 
-        #This ADD contact isn't working...
-        self.contacts.add(name, phone_number, email)
+        new_contact = Contact(name, phone_number, email)
+        self.contacts.append(new_contact)
         print(f"Contact '{name}' added successfully.")
 
     def display_all_contacts(self):
