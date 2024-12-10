@@ -12,7 +12,6 @@ class ContactBook:
         ]
 
     def add_contact(self, name, phone_number, email):
-
         new_contact = Contact(name, phone_number, email)
         self.contacts.append(new_contact)
         print(f"Contact '{name}' added successfully.")
@@ -28,12 +27,11 @@ class ContactBook:
 
     def search_contact(self, name):
         for contact in self.contacts:
-            if contact.name.lower() == name.lower():
+            if contact.name.lower() == name:
                 print(f"\nContact Found:\nName: {contact.name}\nPhone: {contact.phone_number}\nEmail: {contact.email}")
                 return contact # chatgpt help
-            else:
-                print(f"\nSorry, no contact found with the name '{name}'.")
-                return None
+            print(f"\nSorry, no contact found with the name '{name}'.")
+            return None
 
     def update_contact(self, name):
         contact = self.search_contact(name)
@@ -105,17 +103,16 @@ def main():
             search_name = input("Who are you searching for: ").strip().lower()
             contact_book.search_contact(search_name)
         elif choice == "4":
-            update_name = input("Which contact are you trying to update: ").strip().lower()
+            update_name = input("Which contact are you trying to update: ").strip()
             contact_book.update_contact(update_name)
         elif choice == "5":
-            delete_name = input("Which contact are you trying to delete: ").strip().lower()
+            delete_name = input("Which contact are you trying to delete: ").strip()
             contact_book.delete_contact(delete_name)
         elif choice == "0":
             print("Exiting Contact Book. Goodbye!")
             break
         else:
-            #Needs code here to check incorrect user choice 
-            print("")
+            print("Please enter a number between 0 and 5.")
 
 if __name__ == "__main__":
     main()
