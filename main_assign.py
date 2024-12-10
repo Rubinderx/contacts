@@ -21,13 +21,18 @@ class ContactBook:
         if self.contacts:
             print("All Contacts:")
 
-            #Errors in code here
             for contact in self.contacts:
                 print(f"Name: {contact.name}\nPhone: {contact.phone_number}\nEmail: {contact.email}\n")
         else:
             print("No contacts found.")
 
-    #Missing SEARCH contact function
+    def search_contact(self, name):
+        for contact in self.contacts:
+            if contact.name.lower() == name.lower():
+                print(f"\nContact Found:\nName: {contact.name}\nPhone: {contact.phone_number}\nEmail: {contact.email}")
+            
+            else:
+                print(f"\nSorry, no contact found with the name '{name}'.")
 
     #Missing UPDATE contact function
 
@@ -39,7 +44,8 @@ def main():
     while True:
         print("\n--- Contact Book Menu ---")
         print("1. Add New Contact")
-        #Missing options
+        print("2. Display All Contacts")
+        print("3. Search Contacts")
         print("0. Exit")
 
         choice = input("Enter your choice: ")
@@ -49,6 +55,11 @@ def main():
             phone_number = input("Enter phone number: ")
             email = input("Enter email: ")
             contact_book.add_contact(name, phone_number, email)
+        elif choice == "2":
+            contact_book.display_all_contacts()
+        elif choice == "3":
+            search_name = input("Who are you searching for: ")
+            contact_book.search_contact(search_name)
         elif choice == "0":
             print("Exiting Contact Book. Goodbye!")
             break
